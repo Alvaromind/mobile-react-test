@@ -1,6 +1,6 @@
 # Mobile React Test
 
-Simple mobile shop application using React + Redux.
+Simple mobile shop application using [React](https://reactjs.org/) + [Redux](https://redux.js.org/).
 
 ## Available Scripts
 

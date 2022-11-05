@@ -37,6 +37,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "import"],
   rules: {
+    "no-unused-vars": RULE.WARN,
     "no-param-reassign": RULE.OFF,
     "react/destructuring-assignment": RULE.WARN,
     "react/no-unused-prop-types": RULE.WARN,
@@ -48,6 +49,10 @@ module.exports = {
       RULE.ERROR,
       { extensions: [".js", ".jsx", ".ts", ".tsx"] },
     ],
+    "react/function-component-definition": [2, {
+      "namedComponents": "arrow-function",
+      "unnamedComponents": "arrow-function",
+    }],
     "react/prop-types": RULE.OFF,
     "arrow-parens": [RULE.ERROR, "as-needed"],
     "jsx-a11y/anchor-is-valid": [
