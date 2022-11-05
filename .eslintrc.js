@@ -30,7 +30,7 @@ module.exports = {
       node: {
         paths: ["src"],
         moduleDirectory: ["node_modules", "src/"],
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: [".js", ".jsx"],
       },
     },
     jest: { version: 26 },
@@ -47,7 +47,7 @@ module.exports = {
     "object-curly-newline": RULE.OFF,
     "react/jsx-filename-extension": [
       RULE.ERROR,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+      { extensions: [".js", ".jsx"] },
     ],
     "react/function-component-definition": [2, {
       "namedComponents": "arrow-function",
