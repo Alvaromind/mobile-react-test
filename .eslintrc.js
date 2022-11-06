@@ -37,7 +37,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "import"],
   rules: {
-    "no-unused-vars": RULE.WARN,
+    "no-unused-vars": [RULE.WARN, { "argsIgnorePattern": "^_" }],
     "no-param-reassign": RULE.OFF,
     "react/destructuring-assignment": RULE.WARN,
     "react/no-unused-prop-types": RULE.WARN,
@@ -77,6 +77,7 @@ module.exports = {
       },
     ],
     "no-use-before-define": [RULE.OFF],
+    "default-param-last": RULE.OFF,
   },
   overrides: [
     {

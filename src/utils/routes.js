@@ -1,6 +1,6 @@
 const ROUTES = {
   root: "/",
-  details: "/:product"
+  details: id => `/${id}`,
 };
 
 export default ROUTES;

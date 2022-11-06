@@ -11,7 +11,7 @@ const Router = () => (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
         <Route path={ROUTES.root} element={<ProductList />} />
-        <Route path={ROUTES.details} element={<ProductDetails />} />
+        <Route path={ROUTES.details(":id")} element={<ProductDetails />} />
       </Routes>
     </Suspense>
   </BrowserRouter>
