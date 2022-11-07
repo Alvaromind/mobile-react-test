@@ -11,9 +11,9 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 1em 2em;
+  padding: 1em 10%;
   background-color: var(--header-background-color);
-  box-shadow: 0px 0px 1px 2px rgb(0 0 0 / 10%);
+  box-shadow: 0 0 5px 5px rgb(0 0 0 / 20%);
 }
 
 .header__logo {

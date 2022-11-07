@@ -1,7 +1,9 @@
 import React from "react";
 
 import { useGetMobilesQuery } from "api/mobilesApi";
-import ROUTES from "utils/routes";
+import ProductCard from "components/ProductCard";
+
+import "./ProductList.css";
 
 const ProductList = () => {
   const {
@@ -11,21 +13,16 @@ const ProductList = () => {
     error,
   } = useGetMobilesQuery();
 
-  return (
-    <>
-      <h1>PRODUCT LIST</h1>
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-      {isLoading
-        ? <p>Loading...</p>
-        : mobiles.map(mobile => (
-          <p>
-            <a href={ROUTES.details(mobile.id)}>{mobile.brand} - {mobile.model}
-              <img src={mobile.imgUrl} alt="" />
-            </a> <strong>{mobile.price}</strong>
-          </p>
-        ))
-      }
-    </>
+  return (
+    <div className="product-list">
+      {mobiles.map(mobile => (
+        <ProductCard mobile={mobile} />
+      ))}
+    </div>
   );
 };
 
