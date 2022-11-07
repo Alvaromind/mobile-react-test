@@ -19,7 +19,9 @@ const ProductList = () => {
         ? <p>Loading...</p>
         : mobiles.map(mobile => (
           <p>
-            <a href={ROUTES.details(mobile.id)}>{mobile.brand} - {mobile.model}</a> <strong>{mobile.price}</strong>
+            <a href={ROUTES.details(mobile.id)}>{mobile.brand} - {mobile.model}
+              <img src={mobile.imgUrl} alt="" />
+            </a> <strong>{mobile.price}</strong>
           </p>
         ))
       }
