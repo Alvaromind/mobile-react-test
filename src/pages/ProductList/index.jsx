@@ -1,8 +1,8 @@
 import React from "react";
 
 import { useGetMobilesQuery } from "api/mobilesApi";
-import ProductCard from "components/ProductCard";
 
+import ProductCard from "./components/ProductCard";
 import "./ProductList.css";
 
 const ProductList = () => {

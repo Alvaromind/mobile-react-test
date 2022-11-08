@@ -1,13 +1,11 @@
 :root {
   --c-product-card-background: #112D4E;
-  --c-product-card-image: #FFFFFF;
   --c-product-card-color: #EEEEEE;
   --c-product-card-brand: #FFFFFF;
-  --c-product-card-price: #FFD124;
 }
 
 .product-card {
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 20%);
+  box-shadow: var(--default-shadow);
   border-radius: 16px;
   width: 320px;
   max-width: 100%;
@@ -28,7 +26,7 @@
   height: 70%;
   width: 100%;
   text-align: center;
-  background-color: var(--c-product-card-image);
+  background-color: var(--c-product-image-background);
 }
 
 .product-card__image img {
@@ -63,13 +61,12 @@
 }
 
 .product-card__model {
-  font-size: 18px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .product-card__price {
-  color: var(--c-product-card-price);
+  color: var(--c-price);
   font-size: 28px;
   font-weight: 700;
   align-self: flex-end;

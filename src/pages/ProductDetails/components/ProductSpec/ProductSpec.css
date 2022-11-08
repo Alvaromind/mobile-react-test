@@ -1,0 +1,13 @@
+.product-spec {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: calc(50% - 8px);
+  /* 8px is half the gap size */
+  margin-bottom: auto;
+}
+
+.product-spec__label {
+  font-size: 16px;
+  font-weight: 700;
+}

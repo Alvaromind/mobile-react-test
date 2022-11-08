@@ -1,5 +1,9 @@
 :root {
   --c-background: #EFEFEF;
+  --c-font-color: #112D4E;
+  --c-product-image-background: #FFFFFF;
+  --c-price: #FFD124;
+  --default-shadow: 0 0 8px 0 rgba(0, 0, 0, 20%);
 }
 
 * {
@@ -11,7 +15,10 @@
 
 body {
   font-family: 'Rubik';
+  font-size: 18px;
+  color: var(--c-font-color);
+  background-color: var(--c-background);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--c-background);
 }
