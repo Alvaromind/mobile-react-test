@@ -36,11 +36,11 @@ const ProductSpec = ({ keyword, content }) => {
 
   return (
     <div className="product-spec">
-      <Icon size={48} style={{ flexShrink: 0 }} />
+      <Icon size={36} style={{ flexShrink: 0 }} />
 
       <div>
         <p className="product-spec__label">{label}</p>
-        <p>{content}</p>
+        <p className="product-spec__content">{content}</p>
       </div>
     </div>
   );

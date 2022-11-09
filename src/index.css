@@ -4,6 +4,7 @@
   --c-product-image-background: #FFFFFF;
   --c-price: #FFD124;
   --default-shadow: 0 0 8px 0 rgba(0, 0, 0, 20%);
+  --f-family: 'Rubik';
 }
 
 * {
@@ -13,12 +14,30 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow: overlay;
+}
+
 body {
-  font-family: 'Rubik';
+  font-family: var(--f-family);
   font-size: 18px;
   color: var(--c-font-color);
   background-color: var(--c-background);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 23px;
+  border-radius: 16px;
+  color: inherit;
+  background-clip: padding-box;
+  border: 6px solid transparent;
+  min-height: 40px;
+}
+
+*::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px;
 }

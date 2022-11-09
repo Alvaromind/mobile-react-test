@@ -6,6 +6,8 @@ import { useGetMobileByIdQuery } from "api/mobilesApi";
 import ProductSpec from "./components/ProductSpec";
 import "./ProductDetails.css";
 
+const parseCameraArray = arr => typeof arr === "string" ? arr : arr.join(", ");
+
 const ProductDetails = () => {
   const { id } = useParams();
 
@@ -16,16 +18,23 @@ const ProductDetails = () => {
     error,
   } = useGetMobileByIdQuery(id);
 
+  const handleSubmit = ev => {
+    ev.preventDefault();
+    const formData = new FormData(ev.target);
+    const params = Object.fromEntries(formData);
+  };
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
   const {
     imgUrl, brand, model, price,
-    cpu, ram, os, displayResolution, battery, primaryCamera, secondaryCmera, dimentions, weight
+    cpu, ram, os, displayResolution, battery, primaryCamera, secondaryCmera, dimentions, weight,
+    colors, internalMemory
   } = data;
 
-  const camera = `Primaria: ${primaryCamera.reduce((prev, cur) => `${prev}, ${cur}`, "")}\nSecundaria: ${secondaryCmera} `;
+  const camera = `Primaria: ${parseCameraArray(primaryCamera)}\nSecundaria: ${parseCameraArray(secondaryCmera)} `;
 
   return (
     <div className="product-details">
@@ -37,18 +46,48 @@ const ProductDetails = () => {
         <div className="product-details__description">
           <h1>{brand} {model}</h1>
 
-          <p className="product-details__price">{price}€</p>
+          <p className="product-details__price">{price || "--"}€</p>
 
-          <div className="product-details__specifications">
-            <ProductSpec keyword="cpu" content={cpu} />
-            <ProductSpec keyword="ram" content={ram} />
-            <ProductSpec keyword="os" content={os} />
-            <ProductSpec keyword="battery" content={battery} />
-            <ProductSpec keyword="displayResolution" content={displayResolution} />
-            <ProductSpec keyword="dimentions" content={dimentions} />
-            <ProductSpec keyword="camera" content={camera} />
-            <ProductSpec keyword="weight" content={`${weight}g`} />
+          <div>
+            <div className="product-details__specifications">
+              <ProductSpec keyword="cpu" content={cpu} />
+              <ProductSpec keyword="ram" content={ram} />
+              <ProductSpec keyword="os" content={os} />
+              <ProductSpec keyword="battery" content={battery} />
+              <ProductSpec keyword="displayResolution" content={displayResolution} />
+              <ProductSpec keyword="dimentions" content={dimentions} />
+              <ProductSpec keyword="camera" content={camera} />
+              <ProductSpec keyword="weight" content={`${weight}g`} />
+            </div>
           </div>
+
+          <form className="product-details__actions" onSubmit={handleSubmit}>
+            <p><strong>Seleccione un color:</strong></p>
+
+            <div className="product-details__selector-container">
+              {colors.map((color, index) => (
+                <label key={`radio-${color}`} htmlFor={color} className="product-details__selector">
+                  <input type="radio" name="color" value={color} id={color} defaultChecked={index === 0} />
+                  <span>{color}</span>
+                </label>
+              ))}
+            </div>
+
+            <p><strong>Seleccione almacenamiento:</strong></p>
+
+            <div className="product-details__selector-container">
+              {internalMemory.map((memory, index) => (
+                <label key={`radio-${memory}`} htmlFor={memory} className="product-details__selector">
+                  <input type="radio" name="memory" value={memory} id={memory} defaultChecked={index === 0} />
+                  <span>{memory}</span>
+                </label>
+              ))}
+            </div>
+
+            <button type="submit" className="product-details__submit">
+              Añadir al carrito
+            </button>
+          </form>
         </div>
       </div>
     </div>
