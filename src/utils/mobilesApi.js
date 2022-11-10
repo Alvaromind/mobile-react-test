@@ -5,7 +5,7 @@ export const mobilesApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://front-test-api.herokuapp.com/api"
   }),
-  tagTypes: ["Mobiles", "Cart"],
+  tagTypes: ["Mobiles"],
   keepUnusedDataFor: 3600, // Keep data in cache for 1 hour
   endpoints: build => ({
     getMobiles: build.query({
@@ -25,7 +25,6 @@ export const mobilesApi = createApi({
         method: "POST",
         body: mobile
       }),
-      invalidatesTags: ["Cart"]
     })
   }),
 });

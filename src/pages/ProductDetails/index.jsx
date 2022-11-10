@@ -1,27 +1,36 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { useGetMobileByIdQuery } from "api/mobilesApi";
+import { useGetMobileByIdQuery, useAddMobileToCartMutation } from "utils/mobilesApi";
+import { updateCartItemsAction } from "utils/cartReducer";
 
 import ProductSpec from "./components/ProductSpec";
 import "./ProductDetails.css";
 
 const parseCameraArray = arr => typeof arr === "string" ? arr : arr.join(", ");
 
-const ProductDetails = () => {
+const ProductDetails = ({ updateCartItems }) => {
   const { id } = useParams();
-
   const {
     data,
     isLoading,
     isError,
     error,
   } = useGetMobileByIdQuery(id);
+  const [addMobileToCart] = useAddMobileToCartMutation();
 
-  const handleSubmit = ev => {
+  const handleSubmit = async ev => {
     ev.preventDefault();
     const formData = new FormData(ev.target);
     const params = Object.fromEntries(formData);
+
+    const cartItems = await addMobileToCart({
+      id,
+      colorCode: params.color,
+      storageCode: params.memory,
+    });
+    updateCartItems(cartItems);
   };
 
   if (isLoading) {
@@ -29,9 +38,8 @@ const ProductDetails = () => {
   }
 
   const {
-    imgUrl, brand, model, price,
-    cpu, ram, os, displayResolution, battery, primaryCamera, secondaryCmera, dimentions, weight,
-    colors, internalMemory
+    imgUrl, brand, model, price, cpu, ram, os, displayResolution, battery,
+    primaryCamera, secondaryCmera, dimentions, weight, colors, internalMemory
   } = data;
 
   const camera = `Primaria: ${parseCameraArray(primaryCamera)}\nSecundaria: ${parseCameraArray(secondaryCmera)} `;
@@ -40,7 +48,7 @@ const ProductDetails = () => {
     <div className="product-details">
       <div className="product-details__container">
         <div className="product-details__image">
-          <img src={imgUrl} alt={`${brand} -${model} `} loading="lazy" />
+          <img src={imgUrl} alt={`${brand} -${model} `} width="160px" height="212px" loading="lazy" />
         </div>
 
         <div className="product-details__description">
@@ -94,4 +102,6 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+const mapDispatchToProps = { updateCartItems: updateCartItemsAction };
+
+export default connect(null, mapDispatchToProps)(ProductDetails);

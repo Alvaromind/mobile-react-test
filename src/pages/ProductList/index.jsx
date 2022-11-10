@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import { useGetMobilesQuery } from "api/mobilesApi";
+import { useGetMobilesQuery } from "utils/mobilesApi";
 
 import ProductCard from "./components/ProductCard";
 import "./ProductList.css";

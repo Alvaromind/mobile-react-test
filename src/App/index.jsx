@@ -1,13 +1,13 @@
 import React from "react";
-import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
+import { Provider as ReduxProvider } from "react-redux";
 
-import { mobilesApi } from "api/mobilesApi";
+import store from "./redux/store";
 import Router from "./components/Router";
 
 const App = () => (
-  <ApiProvider api={mobilesApi} >
+  <ReduxProvider store={store} >
     <Router />
-  </ApiProvider>
+  </ReduxProvider>
 );
 
 export default App;
