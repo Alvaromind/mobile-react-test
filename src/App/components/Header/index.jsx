@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 import ROUTES from "utils/routes";
 
 import "./Header.css";
@@ -14,6 +16,12 @@ const Header = () => (
         height={230}
       />
     </NavLink>
+
+    <div className="header__shopping-cart">
+      <AiOutlineShoppingCart size={40} />
+
+      <span /* Change font-size if number >= 100 */>3</span>
+    </div>
   </div>
 );
 
