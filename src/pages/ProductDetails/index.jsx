@@ -21,7 +21,7 @@ const ProductDetails = ({ updateCartItems }) => {
   const [addMobileToCart] = useAddMobileToCartMutation();
 
   const handleSubmit = async ev => {
-    ev.preventDefault();
+    ev.preventDefault(); // Prevent refresh
     const formData = new FormData(ev.target);
     const params = Object.fromEntries(formData);
 
@@ -37,6 +37,7 @@ const ProductDetails = ({ updateCartItems }) => {
     return <p>Loading...</p>;
   }
 
+  // Destructure info of the mobile
   const {
     imgUrl, brand, model, price, cpu, ram, os, displayResolution, battery,
     primaryCamera, secondaryCmera, dimentions, weight, colors, internalMemory

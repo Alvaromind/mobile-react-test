@@ -17,6 +17,7 @@ const ProductList = () => {
   const [filteredMobiles, setFilteredMobiles] = useState([]);
   let filterTimeout;
 
+  // Update filteredMobiles when mobiles data is ready
   useEffect(() => {
     if (!isLoading) {
       setFilteredMobiles(mobiles);
@@ -26,12 +27,13 @@ const ProductList = () => {
   const handleFilter = ev => {
     const query = ev.target.value;
 
-    clearTimeout(filterTimeout);
+    clearTimeout(filterTimeout); // Clear previous timeout
     if (!query) {
       setFilteredMobiles(mobiles);
       return;
     }
 
+    // Set timeout to wait for another change in the search text field
     filterTimeout = setTimeout(() => {
       setFilteredMobiles(mobiles.filter(mobile => (
         `${mobile.brand}-${mobile.model}`.toLowerCase().includes(query.toLowerCase())
@@ -52,6 +54,7 @@ const ProductList = () => {
           onChange={handleFilter}
           id="search-bar"
         />
+
         <FaSearch />
       </label>
 

@@ -21,7 +21,10 @@ const Header = ({ cartItems }) => (
     <div className="header__shopping-cart">
       <AiOutlineShoppingCart size={40} />
 
-      <span /* Change font-size if number >= 100 */>{cartItems}</span>
+      {/* Reduce font size if number of items has 3 digits or more */}
+      <span {...(cartItems >= 100 && { style: { fontSize: "12px" } })}>
+        {cartItems}
+      </span>
     </div>
   </div>
 );
