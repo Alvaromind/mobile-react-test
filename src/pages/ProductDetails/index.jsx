@@ -2,6 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import ErrorBoundary from "pages/components/ErrorBoundary";
+import ErrorComponent from "pages/components/ErrorComponent";
+import Loader from "pages/components/Loader";
+
 import { useGetMobileByIdQuery, useAddMobileToCartMutation } from "utils/mobilesApi";
 import { updateCartItemsAction } from "utils/cartReducer";
 
@@ -15,8 +19,6 @@ const ProductDetails = ({ updateCartItems }) => {
   const {
     data,
     isLoading,
-    isError,
-    error,
   } = useGetMobileByIdQuery(id);
   const [addMobileToCart] = useAddMobileToCartMutation();
 
@@ -34,7 +36,7 @@ const ProductDetails = ({ updateCartItems }) => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader fullScreen />;
   }
 
   // Destructure info of the mobile
@@ -44,7 +46,6 @@ const ProductDetails = ({ updateCartItems }) => {
   } = data;
 
   const camera = `Primaria: ${parseCameraArray(primaryCamera)}\nSecundaria: ${parseCameraArray(secondaryCmera)} `;
-
   return (
     <div className="product-details">
       <div className="product-details__container">
@@ -105,4 +106,10 @@ const ProductDetails = ({ updateCartItems }) => {
 
 const mapDispatchToProps = { updateCartItems: updateCartItemsAction };
 
-export default connect(null, mapDispatchToProps)(ProductDetails);
+const ConnectedProductDetails = connect(null, mapDispatchToProps)(ProductDetails);
+
+export default () => (
+  <ErrorBoundary errorComponent={<ErrorComponent errorMessage="Ups! Ha ocurrido un error inesperado" />}>
+    <ConnectedProductDetails />
+  </ErrorBoundary>
+);

@@ -5,10 +5,10 @@ import { useGetMobilesQuery } from "utils/mobilesApi";
 
 import Loader from "pages/components/Loader";
 import ErrorBoundary from "pages/components/ErrorBoundary";
+import ErrorComponent from "pages/components/ErrorComponent";
 
 import ProductCard from "./components/ProductCard";
 import "./ProductList.css";
-import EmptyList from "./components/EmptyList";
 
 const ProductList = () => {
   const {
@@ -50,7 +50,7 @@ const ProductList = () => {
     }
 
     if (filteredMobiles && filteredMobiles.length === 0) {
-      return <EmptyList />;
+      return <ErrorComponent errorMessage="No se han encontrado resultados" />;
     }
 
     return filteredMobiles.map(mobile => (
@@ -80,7 +80,7 @@ const ProductList = () => {
 };
 
 export default () => (
-  <ErrorBoundary errorComponent={<EmptyList />}>
+  <ErrorBoundary errorComponent={<ErrorComponent errorMessage="Ups! Ha ocurrido un error inesperado." />}>
     <ProductList />
   </ErrorBoundary>
 );

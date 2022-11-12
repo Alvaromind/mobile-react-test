@@ -1,14 +1,14 @@
 import React from "react";
 import { FaRegSadTear } from "react-icons/fa";
 
-import "./EmptyList.css";
+import "./ErrorComponent.css";
 
-const EmptyList = () => (
+const ErrorComponent = ({ errorMessage }) => (
   <div className="empty-list">
     <FaRegSadTear size={72} />
 
-    <p>No se han encontrado resultados</p>
+    <p>{errorMessage}</p>
   </div>
 );
 
-export default EmptyList;
+export default ErrorComponent;

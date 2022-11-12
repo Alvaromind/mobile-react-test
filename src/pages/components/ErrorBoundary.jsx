@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-console */
 import React from "react";
 
 class ErrorBoundary extends React.Component {
