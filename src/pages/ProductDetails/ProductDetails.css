@@ -92,7 +92,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .product-details__actions {
@@ -107,7 +107,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
-  margin: 24px 0;
+  margin-top: 16px;
+  margin-bottom: 24px;
 }
 
 .product-details__selector>input[type="radio"] {
@@ -121,7 +122,7 @@
 
 .product-details__selector>span {
   padding: 0 16px;
-  height: 70px;
+  height: 50px;
   max-width: 170px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -146,6 +147,6 @@
   padding: 16px 24px;
   border-radius: 30px;
   min-width: 150px;
-  margin: 24px auto;
+  margin: 8px auto 24px;
   cursor: pointer;
 }
