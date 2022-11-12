@@ -1,6 +1,6 @@
 .product-list {
   width: 100%;
-  padding: 48px 10% 64px;
+  padding: 24px 10% 64px;
   display: flex;
   flex-direction: column;
 }

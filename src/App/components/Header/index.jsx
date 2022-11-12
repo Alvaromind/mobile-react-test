@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import ROUTES from "utils/routes";
@@ -9,14 +9,14 @@ import "./Header.css";
 
 const Header = ({ cartItems }) => (
   <div className="header">
-    <NavLink to={ROUTES.root} className="header__logo">
+    <Link to={ROUTES.root} className="header__logo">
       <img
         src="/assets/images/logo.svg"
         alt="Mobile React Logo"
         width={548}
         height={230}
       />
-    </NavLink>
+    </Link>
 
     <div className="header__shopping-cart">
       <AiOutlineShoppingCart size={40} />

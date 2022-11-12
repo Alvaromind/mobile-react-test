@@ -5,7 +5,7 @@
 
 @media (max-width: 1550px) {
   .product-details {
-    padding: 64px 10%;
+    padding: 24px 10% 64px;
   }
 }
 
