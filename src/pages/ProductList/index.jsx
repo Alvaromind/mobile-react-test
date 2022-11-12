@@ -3,8 +3,12 @@ import { FaSearch } from "react-icons/fa";
 
 import { useGetMobilesQuery } from "utils/mobilesApi";
 
+import Loader from "pages/components/Loader";
+import ErrorBoundary from "pages/components/ErrorBoundary";
+
 import ProductCard from "./components/ProductCard";
 import "./ProductList.css";
+import EmptyList from "./components/EmptyList";
 
 const ProductList = () => {
   const {
@@ -40,6 +44,20 @@ const ProductList = () => {
     }, 500);
   };
 
+  const printListContent = () => {
+    if (isLoading) {
+      return <Loader fullScreen />;
+    }
+
+    if (filteredMobiles && filteredMobiles.length === 0) {
+      return <EmptyList />;
+    }
+
+    return filteredMobiles.map(mobile => (
+      <ProductCard key={`${mobile.brand}-${mobile.model}`} mobile={mobile} />
+    ));
+  };
+
   return (
     <div className="product-list">
       <label htmlFor="search-bar" className="product-list__search">
@@ -55,15 +73,14 @@ const ProductList = () => {
       </label>
 
       <div className="product-list__cards-container">
-        {isLoading
-          ? <span className="product-list__loading"><span />Cargando...</span>
-          : filteredMobiles.map(mobile => (
-            <ProductCard key={`${mobile.brand}-${mobile.model}`} mobile={mobile} />
-          ))
-        }
+        {printListContent()}
       </div>
     </div>
   );
 };
 
-export default ProductList;
+export default () => (
+  <ErrorBoundary errorComponent={<EmptyList />}>
+    <ProductList />
+  </ErrorBoundary>
+);

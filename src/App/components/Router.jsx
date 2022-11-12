@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Loader from "pages/components/Loader";
 import ROUTES from "utils/routes";
 import Layout from "./Layout";
 
@@ -9,7 +10,7 @@ const ProductDetails = React.lazy(() => import("pages/ProductDetails"));
 
 const Router = () => (
   <BrowserRouter>
-    <Suspense fallback={<h1>Loading</h1>}>
+    <Suspense fallback={<Loader fullScreen />}>
       <Routes>
         <Route element={<Layout />}>
           <Route
