@@ -1,7 +1,8 @@
 const ROUTES = {
+  any: "*",
   root: "/",
   details: id => `/${id}`,
-  any: "*",
+  notFound: "/not-found",
 };
 
 export default ROUTES;

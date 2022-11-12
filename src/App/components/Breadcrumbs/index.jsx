@@ -16,6 +16,7 @@ const DynamicBreadcrumb = ({ match }) => {
 const routes = [
   { path: ROUTES.root, breadcrumb: "Dispositivos móviles" },
   { path: ROUTES.details(":id"), breadcrumb: DynamicBreadcrumb },
+  { path: ROUTES.any, breadcrumb: null },
 ];
 
 const Breadcrumbs = () => {
@@ -25,13 +26,17 @@ const Breadcrumbs = () => {
     <div className="breadcrumbs">
       {breadcrumbs.map(({ match, breadcrumb }, index) => {
         if (index === breadcrumbs.length - 1) {
-          return <span key={`breadcrumb-${index}`}>{breadcrumb}</span>;
+          return (
+            <span key={`breadcrumb-${index}`} style={{ fontWeight: 700 }}>
+              {breadcrumb}
+            </span>
+          );
         }
 
         return (
           <Fragment key={`breadcrumb-${index}`}>
             <Link to={match} className="breadcrumbs__link">{breadcrumb}</Link>
-            <span> &gt; </span>
+            <span style={{ fontWeight: 700 }}> &gt; </span>
           </Fragment>
         );
       })}

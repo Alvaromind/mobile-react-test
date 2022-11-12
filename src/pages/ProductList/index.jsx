@@ -11,7 +11,6 @@ const ProductList = () => {
     data: mobiles,
     isLoading,
     isError,
-    error,
   } = useGetMobilesQuery();
 
   const [filteredMobiles, setFilteredMobiles] = useState([]);
@@ -41,10 +40,6 @@ const ProductList = () => {
     }, 500);
   };
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div className="product-list">
       <label htmlFor="search-bar" className="product-list__search">
@@ -53,15 +48,19 @@ const ProductList = () => {
           placeholder="Buscar en Mobile React"
           onChange={handleFilter}
           id="search-bar"
+          disabled={isLoading || isError}
         />
 
         <FaSearch />
       </label>
 
       <div className="product-list__cards-container">
-        {filteredMobiles.map(mobile => (
-          <ProductCard key={`${mobile.brand}-${mobile.model}`} mobile={mobile} />
-        ))}
+        {isLoading
+          ? <span className="product-list__loading"><span />Cargando...</span>
+          : filteredMobiles.map(mobile => (
+            <ProductCard key={`${mobile.brand}-${mobile.model}`} mobile={mobile} />
+          ))
+        }
       </div>
     </div>
   );

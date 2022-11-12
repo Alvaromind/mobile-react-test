@@ -1,6 +1,7 @@
 :root {
   --c-background: #EFEFEF;
   --c-font-color: #112D4E;
+  --c-link: #0094FF;
   --c-product-image-background: #FFFFFF;
   --c-price: #FFD124;
   --default-shadow: 0 0 8px 0 rgba(0, 0, 0, 20%);
