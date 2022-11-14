@@ -23,19 +23,6 @@ const ProductDetails = ({ updateCartItems }) => {
   } = useGetMobileByIdQuery(id);
   const [addMobileToCart] = useAddMobileToCartMutation();
 
-  const handleSubmit = async ev => {
-    ev.preventDefault(); // Prevent refresh
-    const formData = new FormData(ev.target);
-    const params = Object.fromEntries(formData);
-
-    const cartItems = await addMobileToCart({
-      id,
-      colorCode: params.color,
-      storageCode: params.memory,
-    });
-    updateCartItems(cartItems);
-  };
-
   if (isLoading) {
     return <Loader fullScreen />;
   }
@@ -47,10 +34,27 @@ const ProductDetails = ({ updateCartItems }) => {
   // Destructure info of the mobile
   const {
     imgUrl, brand, model, price, cpu, ram, os, displayResolution, battery,
-    primaryCamera, secondaryCmera, dimentions, weight, colors, internalMemory
+    primaryCamera, secondaryCmera, dimentions, weight, colors, internalMemory, options
   } = data;
 
+  const handleSubmit = async ev => {
+    ev.preventDefault(); // Prevent refresh
+    const formData = new FormData(ev.target);
+    const params = Object.fromEntries(formData);
+
+    const colorCode = options.colors.find(c => c.name === params.color)?.code;
+    const storageCode = options.storages.find(s => s.name === params.memory)?.code;
+
+    const cartItems = await addMobileToCart({
+      id,
+      colorCode,
+      storageCode,
+    });
+    updateCartItems(cartItems);
+  };
+
   const camera = `Primaria: ${parseCameraArray(primaryCamera)}\nSecundaria: ${parseCameraArray(secondaryCmera)} `;
+
   return (
     <div className="product-details">
       <div className="product-details__container">
