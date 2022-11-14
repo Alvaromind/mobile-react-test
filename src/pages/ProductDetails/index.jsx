@@ -19,6 +19,7 @@ const ProductDetails = ({ updateCartItems }) => {
   const {
     data,
     isLoading,
+    isError,
   } = useGetMobileByIdQuery(id);
   const [addMobileToCart] = useAddMobileToCartMutation();
 
@@ -39,6 +40,10 @@ const ProductDetails = ({ updateCartItems }) => {
     return <Loader fullScreen />;
   }
 
+  if (isError || !data) {
+    return <ErrorComponent errorMessage="Ups! Ha ocurrido un error inesperado." />;
+  }
+
   // Destructure info of the mobile
   const {
     imgUrl, brand, model, price, cpu, ram, os, displayResolution, battery,
@@ -50,7 +55,7 @@ const ProductDetails = ({ updateCartItems }) => {
     <div className="product-details">
       <div className="product-details__container">
         <div className="product-details__image">
-          <img src={imgUrl} alt={`${brand} -${model} `} width="160px" height="212px" loading="lazy" />
+          <img src={imgUrl} alt={`${brand}-${model}`} width="160px" height="212px" loading="lazy" />
         </div>
 
         <div className="product-details__description">
@@ -109,7 +114,7 @@ const mapDispatchToProps = { updateCartItems: updateCartItemsAction };
 const ConnectedProductDetails = connect(null, mapDispatchToProps)(ProductDetails);
 
 export default () => (
-  <ErrorBoundary errorComponent={<ErrorComponent errorMessage="Ups! Ha ocurrido un error inesperado" />}>
+  <ErrorBoundary errorComponent={<ErrorComponent errorMessage="Ups! Ha ocurrido un error inesperado." />}>
     <ConnectedProductDetails />
   </ErrorBoundary>
 );

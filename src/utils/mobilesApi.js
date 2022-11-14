@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+export const BASE_URL = "https://front-test-api.herokuapp.com/api";
+
 export const mobilesApi = createApi({
   reducerPath: "mobilesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://front-test-api.herokuapp.com/api"
+    baseUrl: BASE_URL
   }),
   tagTypes: ["Mobiles"],
   keepUnusedDataFor: 3600, // Keep data in cache for 1 hour

@@ -33,7 +33,7 @@ module.exports = {
         extensions: [".js", ".jsx"],
       },
     },
-    jest: { version: 26 },
+    jest: { version: 27 },
   },
   plugins: ["react", "react-hooks", "import"],
   rules: {

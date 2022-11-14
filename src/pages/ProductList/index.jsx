@@ -49,6 +49,10 @@ const ProductList = () => {
       return <Loader fullScreen />;
     }
 
+    if (isError) {
+      return <ErrorComponent errorMessage="Ups! Ha ocurrido un error inesperado." />;
+    }
+
     if (filteredMobiles && filteredMobiles.length === 0) {
       return <ErrorComponent errorMessage="No se han encontrado resultados" />;
     }
@@ -66,13 +70,14 @@ const ProductList = () => {
           placeholder="Buscar en Mobile React"
           onChange={handleFilter}
           id="search-bar"
+          data-testid="search-bar"
           disabled={isLoading || isError}
         />
 
         <FaSearch />
       </label>
 
-      <div className="product-list__cards-container">
+      <div className="product-list__cards-container" data-testid="product-list">
         {printListContent()}
       </div>
     </div>

@@ -1,0 +1,45 @@
+{
+  "id": 1,
+  "brand": "Test Brand 1",
+  "model": "Test Model 1",
+  "price": "10",
+  "imgUrl": "image",
+  "dimentions": "191.7 x 101 x 9.4 mm (7.55 x 3.98 x 0.37 in)",
+  "weight": "260",
+  "os": "Android 6.0 (Marshmallow)",
+  "cpu": "Quad-core 1.3 GHz Cortex-A53",
+  "internalMemory": [
+    "16 GB",
+    "32 GB"
+  ],
+  "ram": "2 GB RAM",
+  "primaryCamera": [
+    "13 MP",
+    "autofocus"
+  ],
+  "secondaryCmera": [
+    "2 MP",
+    "720p"
+  ],
+  "colors": [
+    "Black"
+  ],
+  "options": {
+    "colors": [
+      {
+        "code": 1000,
+        "name": "Black"
+      }
+    ],
+    "storages": [
+      {
+        "code": 2000,
+        "name": "16 GB"
+      },
+      {
+        "code": 2001,
+        "name": "32 GB"
+      }
+    ]
+  }
+}

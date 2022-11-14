@@ -6,13 +6,13 @@ const Loader = ({ fullScreen }) => {
   if (fullScreen) {
     return (
       <div className="loader__container">
-        <span className="loader"><span />Cargando...</span>
+        <span className="loader" aria-busy="true"><span />Cargando...</span>
       </div>
     );
   }
 
   return (
-    <span className="loader"><span />Cargando...</span>
+    <span className="loader" aria-busy="true"><span />Cargando...</span>
   );
 };
 

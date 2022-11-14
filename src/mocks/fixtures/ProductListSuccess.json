@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "brand": "Test Brand 1",
+    "model": "Test Model 1",
+    "price": "10",
+    "imgUrl": "https://front-test-api.herokuapp.com/images/ZmGrkLRPXOTpxsU4jjAcv.jpg"
+  },
+  {
+    "id": 2,
+    "brand": "Test Brand 2",
+    "model": "Test Model 2",
+    "price": "20",
+    "imgUrl": "https://front-test-api.herokuapp.com/images/ZmGrkLRPXOTpxsU4jjAcv.jpg"
+  },
+  {
+    "id": 3,
+    "brand": "Test Brand 3",
+    "model": "Test Model 3",
+    "price": "30",
+    "imgUrl": "https://front-test-api.herokuapp.com/images/ZmGrkLRPXOTpxsU4jjAcv.jpg"
+  }
+]
